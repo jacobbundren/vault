@@ -1,27 +1,38 @@
 <template>
-    <v-row>
+    <v-row >
       <v-col
         v-for="n in numDocs"
         :key="n"
         class="d-flex child-flex"
         cols="1"
       >
-        <GridItem :randomNumber="n" />
+       <GridItem :file="{
+         id: n,
+         filename: `Image ${n}`,
+         size: 123,
+         type: fileTypes.JPG,
+         url: `https://picsum.photos/500/300?image=${n}`
+       }" />
       </v-col>
     </v-row>
 
 </template>
-<script>
-import GridItem from "../components/GridItem";
-export default {
+<script lang="ts">
+import GridItem from "../components/GridItem.vue";
+import type File  from "@/types/File";
+import {defineComponent} from "vue";
+import {FileType} from "@/types/FileType";
+export default defineComponent({
   name: "DocumentGrid",
-  components: {GridItem},
+  components: { GridItem },
   data() {
     return {
-      numDocs: 32
+      numDocs: 32,
+      fileTypes: FileType,
+      files: [],
     }
-  }
-}
+  },
+})
 </script>
 
 <style scoped>

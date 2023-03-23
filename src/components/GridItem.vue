@@ -1,40 +1,55 @@
 <template>
-  <v-card>
-    <v-img
-      :src="`https://picsum.photos/500/300?image=${randomNumber * 5 + 10}`"
-      :lazy-src="`https://picsum.photos/10/6?image=${randomNumber * 5 + 10}`"
-      aspect-ratio="1"
-      cover
-      class="bg-grey-lighten-2 test"
-    >
-      <template v-slot:placeholder>
-        <v-row
-          class="fill-height ma-0"
-          align="center"
-          justify="center"
-        >
-          <v-progress-circular
-            indeterminate
-            color="grey-lighten-5"
-          ></v-progress-circular>
-        </v-row>
-      </template>
-    </v-img>
-  </v-card>
+  <div class="gridItem__container">
+    <v-card class="gridItem__fileCard">
+      <v-img
+        :src="file.url"
+        :lazy-src="file.url"
+        aspect-ratio="1"
+        cover
+        class="bg-grey-lighten-2"
+      >
+
+        <template v-slot:placeholder>
+          <v-row
+            class="fill-height ma-0"
+            align="center"
+            justify="center"
+          >
+            <v-progress-circular
+              indeterminate
+              color="grey-lighten-5"
+            ></v-progress-circular>
+          </v-row>
+        </template>
+      </v-img>
+    </v-card>
+    <div class="text--darkText fileName">
+      {{ file.filename }}
+    </div>
+  </div>
 </template>
 
-<script>
+<script lang="ts">
+import type File from "@/types/File";
+import {PropType} from "vue";
 export default {
   name: "GridItem",
   props: {
-    randomNumber: Number
+    file: {
+      type: Object as PropType<File>,
+      required: true
+    }
   }
 }
 </script>
 
 <style scoped>
-  .test {
-    min-height: 100px;
+  .gridItem__container {
+    flex-direction: column;
     min-width: 100px;
+    min-height: 100px;
+  }
+  .fileName {
+    text-align: center;
   }
 </style>
