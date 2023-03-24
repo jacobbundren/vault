@@ -1,44 +1,38 @@
 <template>
-    <v-row>
+    <v-row >
       <v-col
         v-for="n in numDocs"
         :key="n"
         class="d-flex child-flex"
         cols="1"
       >
-        <v-img
-          :src="`https://picsum.photos/500/300?image=${n * 5 + 10}`"
-          :lazy-src="`https://picsum.photos/10/6?image=${n * 5 + 10}`"
-          aspect-ratio="1"
-          cover
-          class="bg-grey-lighten-2"
-        >
-          <template v-slot:placeholder>
-            <v-row
-              class="fill-height ma-0"
-              align="center"
-              justify="center"
-            >
-              <v-progress-circular
-                indeterminate
-                color="grey-lighten-5"
-              ></v-progress-circular>
-            </v-row>
-          </template>
-        </v-img>
+       <GridItem :file="{
+         id: n,
+         filename: `Image ${n}`,
+         size: 123,
+         type: fileTypes.JPG,
+         url: `https://picsum.photos/500/300?image=${n}`
+       }" />
       </v-col>
     </v-row>
 
 </template>
-<script>
-export default {
+<script lang="ts">
+import GridItem from "../components/GridItem.vue";
+import type File  from "@/types/File";
+import {defineComponent} from "vue";
+import {FileType} from "@/types/FileType";
+export default defineComponent({
   name: "DocumentGrid",
+  components: { GridItem },
   data() {
     return {
-      numDocs: 32
+      numDocs: 32,
+      fileTypes: FileType,
+      files: [],
     }
-  }
-}
+  },
+})
 </script>
 
 <style scoped>
