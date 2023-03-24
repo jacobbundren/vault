@@ -14,8 +14,19 @@
          url: `https://picsum.photos/500/300?image=${n}`
        }" />
       </v-col>
-    </v-row>
 
+    </v-row>
+  <v-btn
+    icon
+    color="secondary"
+    fab
+    fixed
+    right
+    bottom
+
+  >
+    <v-icon>mdi-plus</v-icon>
+  </v-btn>
 </template>
 <script lang="ts">
 import GridItem from "../components/GridItem.vue";

@@ -21,7 +21,6 @@
           :items="items"
         ></v-list>
       </v-navigation-drawer>
-
       <v-main />
     </v-layout>
   </v-card>
