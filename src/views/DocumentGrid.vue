@@ -10,42 +10,34 @@
          id: n,
          filename: `Image ${n}`,
          size: 123,
-         type: fileTypes.JPG,
+         type: FileType.JPG,
          url: `https://picsum.photos/500/300?image=${n}`
        }" />
       </v-col>
 
     </v-row>
-  <v-btn
-    icon
-    color="secondary"
-    fab
-    fixed
-    right
-    bottom
-
-  >
-    <v-icon>mdi-plus</v-icon>
-  </v-btn>
+    <v-btn
+      icon
+      color="secondary"
+      class="documentGrid__addFileButton"
+      @click="showUploadModal()"
+    >
+      <v-icon>mdi-plus</v-icon>
+    </v-btn>
 </template>
-<script lang="ts">
+<script setup lang="ts">
 import GridItem from "../components/GridItem.vue";
-import type File  from "@/types/File";
-import {defineComponent} from "vue";
 import {FileType} from "@/types/FileType";
-export default defineComponent({
-  name: "DocumentGrid",
-  components: { GridItem },
-  data() {
-    return {
-      numDocs: 32,
-      fileTypes: FileType,
-      files: [],
-    }
-  },
-})
+import { ref } from "vue";
+
+const numDocs = ref(32)
+
 </script>
 
 <style scoped>
-
+.documentGrid__addFileButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
 </style>
