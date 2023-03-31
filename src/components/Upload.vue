@@ -16,7 +16,7 @@
       </template>
 
       <v-card color="background">
-        <v-card-text>
+        <v-card-text color="darkText">
           Drag files or click the + icon to upload files.
         </v-card-text>
         <v-card-actions>
