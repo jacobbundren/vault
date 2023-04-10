@@ -29,18 +29,17 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import type File from "@/types/File";
-import {PropType} from "vue";
-export default {
-  name: "GridItem",
-  props: {
+
+const props = defineProps(
+  {
     file: {
-      type: Object as PropType<File>,
+      type: File,
       required: true
     }
   }
-}
+)
 </script>
 
 <style scoped>
