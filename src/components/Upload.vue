@@ -16,8 +16,11 @@
       </template>
 
       <v-card color="background">
-        <v-card-text color="darkText">
-          Drag files or click the + icon to upload files.
+        <v-card-title>
+          Upload Files
+        </v-card-title>
+        <v-card-text>
+          <Dropzone />
         </v-card-text>
         <v-card-actions>
           <v-btn variant="tonal" color="secondary" @click="uploadModalVisible = false">Upload</v-btn>
@@ -30,6 +33,7 @@
 
 <script setup lang="ts">
 import {ref, Ref} from "vue";
+import Dropzone from "@/components/Dropzone.vue";
 
 let uploadModalVisible: Ref<boolean> = ref(false);
 function showUploadModal(): void {
@@ -38,7 +42,5 @@ function showUploadModal(): void {
 </script>
 
 <style scoped>
-  .upload__modal {
 
-  }
 </style>
